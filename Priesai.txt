@@ -1,0 +1,5 @@
+Harold_Olsen 200 100 20 500
+Carl_Gould 100 80 15 200
+Curtis_Andrews 80 10 60 100
+Owen_Frazier 70 50 7 100
+Ellis_Morrow 50 60 5 50
