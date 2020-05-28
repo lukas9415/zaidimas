@@ -15,9 +15,9 @@
     
   - Galima kelti savo jegos lygi treniruojantis, tačiau tai nėra itin efektyvu, norint padidinti jėga, reikia pirkti tam tikrus daiktus.
   
-  - Treniruotės reikalauja energijos.
+  - Treniruotės ir darbas reikalauja energijos.
   
-  - Jei energijos nėra pakankama, galima rizikuoti ir treniruotis toliau, tačiau prarasite gyvybes.
+  - Jei energijos nėra pakankama, galima rizikuoti bei dirbti ar treniruotis toliau, tačiau prarasite gyvybes.
   
   - Galima mesti iššūkį betkuriems kovotojams, jei turima pakankamai patirties.
   
