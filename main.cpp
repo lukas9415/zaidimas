@@ -44,7 +44,7 @@ struct Items
     int monetos;
 
     int turi;
-}I[12];
+}I[13];
 
 void treniruote()
 {
@@ -683,7 +683,6 @@ void darbas()
 void achievements()
 {
     cout<<"Pasiekimai: (Dar neivykdyti - [ ], ivykdyti - [x]"<<endl;
-    cout<<"-------------------------------------------------"<<endl;
     //------------------------------------------------------------
     cout<<endl;
     cout<<"Sporto pasiekimai:"<<endl;
@@ -762,7 +761,6 @@ void achievements()
     else cout<<" [ ]"<<endl;
     //------------------------------------------------------------
     cout<<endl;
-    cout<<endl;
     system("pause");
     system("CLS");
 }
@@ -770,15 +768,16 @@ void achievements()
 void inventorius()
 {
         cout<<endl;
-        cout<<"------------------------------------------------------------------------------------------------------------------------"<<endl;
-        cout<<" | Gyvybes: "<<hp<<" | Energija: "<<energija<<" | Jega: "<<jega<<" | Monetos: "<<monetos<<" | Patirtis: "<<patirtis<<" | " <<endl;
+        cout<<"-------------------------------------------------------|-Lygis: "<<level<<"----|"<<endl;
+        cout<<" | Gyvybes: "<<hp<<" | Energija: "<<energija<<" | Jega: "<<jega<<" | Monetos: "<<monetos<<" | Patirtis: "<<patirtis<<" |" <<endl;
         cout<<"------------------------------------------------------------------------------------------------------------------------"<<endl;
         cout<<endl;
         cout<<"Jusu inventorius:"<<endl;
-        for (int i = 0; i < 12; i++) {
+        cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
+        for (int i = 0; i < 13; i++) {
                 if(I[i].turi==1)
                 {
-        cout <<i+1<<" "<< I[i].name<<" | ";
+        cout <<"ID "<<i+1<<" | "<< I[i].name<<" | ";
         cout << "Gyvybes verte: " << I[i].hp<<" | ";
         cout << "Jegos verte: " << I[i].jega<<" "<<endl;
         cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
@@ -788,6 +787,88 @@ void inventorius()
 
             system("pause");
             system("CLS");
+}
+
+void parduotuve()
+{
+    cout<<endl;
+    cout<<"-------------------------------------------------------|-Lygis: "<<level<<"----|"<<endl;
+    cout<<" | Gyvybes: "<<hp<<" | Energija: "<<energija<<" | Jega: "<<jega<<" | Monetos: "<<monetos<<" | Patirtis: "<<patirtis<<" | " <<endl;
+    cout<<"------------------------------------------------------------------------------------------------------------------------"<<endl;
+    cout<<endl;
+    cout<<"Sveiki atvyke i parduotuve, pasirinkite ka norite daryti"<<endl;
+    cout<<"[1] Pirki daiktus"<<endl;
+    cout<<"[2] Parduoti daiktus"<<endl;
+    cout<<"[3] Iseiti"<<endl;
+    int pard;
+    cin>>pard;
+    switch(pard)
+    {
+    case 1:
+        {
+            cout<<endl;
+            break;
+        }
+    case 2:
+        {
+            system("CLS");
+            cout<<endl;
+            cout<<"Jusu turimi daiktai:"<<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
+            for (int i = 0; i < 13; i++) {
+                if(I[i].turi==1)
+                {
+            cout <<"ID "<<i<<" | "<< I[i].name<<" | ";
+            cout << "Gyvybes verte: " << I[i].hp<<" | ";
+            cout << "Jegos verte: " << I[i].jega<<" | ";
+            cout << "Kaina: " << I[i].monetos<<" monetu "<<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
+                }
+            }
+
+            int cycle=0;
+
+            while(cycle==0)
+            {
+
+
+            cout<<"Iveskite ID daikto, kuri norite parduoti"<<endl;
+            int id;
+            cin>>id;
+            if(I[id].turi==0 || id>13 || id<0)
+            {
+                cout<<"Neteisingai ivestas daikto ID"<<endl;
+            }
+            else{
+                    ac15=1;
+            cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
+            cout<<I[id].name<<" Sekmingai parduotas. Uzsidirbote "<<I[id].monetos<<" monetu. Praradote "<<I[id].hp<<" gyvybes ir "<<I[id].jega<<" jegos";
+            hp=hp-I[id].hp;
+            jega=jega-I[id].jega;
+            monetos=monetos+I[id].monetos;
+            I[id].turi=0;
+            cout<<endl;
+            system("pause");
+            cycle=1;
+            system("CLS");
+            }
+
+
+            }
+            break;
+        }
+    case 3:
+        {
+            system("CLS");
+            break;
+        }
+    default:
+        {
+            system("CLS");
+            cout<<"Nera tokio pasirinkimo"<<endl;
+            break;
+        }
+    }
 }
 
 void zaidimas()
@@ -837,7 +918,7 @@ void zaidimas()
      fullHP=100;
                 int sumaHP=0;
                 int sumaJEGA=0;
-                for(int i=0; i<12; i++)
+                for(int i=0; i<13; i++)
                 {
                     if(I[i].turi==1)
                     {
@@ -892,12 +973,12 @@ void zaidimas()
         cout<<endl;
     }
 
-    cout<<"----------------------------------|--------------------------------------------------------------------| "<<endl;
+    cout<<"----------------------------------------------------------------------------------------|-Lygis: "<<level<<"----|"<<endl;
     cout<<"Galimi veiksmai-------------------| Gyvybes: "<<hp<<" | Energija: "<<energija<<" | Jega: "<<jega<<" | Monetos: "<<monetos<<" | Patirtis: "<<patirtis<<" | " <<endl;
     cout<<"----------------------------------|--------------------------------------------------------------------| "<<endl;
-    cout<<"[1] ...Prideti"<<endl;
-    cout<<"[2] Perziureti inventoriu||NERA"<<endl;
-    cout<<"[3] Pirkti/parduoti daiktus||NERA"<<endl;
+    cout<<"[1] ...Prideti(HTML vieta maybe)"<<endl;
+    cout<<"[2] Perziureti inventoriu"<<endl;
+    cout<<"[3] Parduotuve"<<endl;
     cout<<"[4] Perziureti kovotoju sarasa"<<endl;
     cout<<"[5] Treniruotis"<<endl;
     cout<<"[6] Ilsetis"<<endl;
@@ -931,6 +1012,8 @@ void zaidimas()
         }
     case 3:
         {
+            system("CLS");
+            parduotuve();
             break;
         }
     case 4:
@@ -1064,7 +1147,7 @@ int main() {
 
 
     ifstream fit("Items.txt");
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < 13; i++) {
             fit >> I[i].name;
             fit >> I[i].hp;
             fit >> I[i].jega;
