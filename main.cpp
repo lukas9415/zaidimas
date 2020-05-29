@@ -10,13 +10,17 @@ int monetos, hp, energija, jega, patirtis;
 int level=1;
 
 int arTreniravosi=0;
-int arDirbo=0;
+
+int fullHP=100;
+int fullPOWER=100;
 
 int kasykla=0;
 int valytojas=0;
 int apsauginis=0;
 int vairuotojas=0;
 int programuotojas=0;
+
+int ac1, ac2, ac3, ac4, ac5, ac6, ac7, ac8, ac9, ac10, ac11, ac12, ac13, ac14, ac15=0;
 
 
 string vardas;
@@ -31,6 +35,17 @@ struct Kovotojai
     int monetos;
 }M[5];
 
+
+struct Items
+{
+    string name;
+    int hp;
+    int jega;
+    int monetos;
+
+    int turi;
+}I[12];
+
 void treniruote()
 {
     arTreniravosi = 1;
@@ -44,6 +59,7 @@ void treniruote()
     {
     case 1:
         {
+        ac1=1;
         system("CLS");
         cout<<"Treniruojamasi."<<endl;
         _sleep(1000);
@@ -137,6 +153,7 @@ void treniruote()
     }
         case 2:
             {
+        ac2=1;
         system("CLS");
         cout<<"Treniruojamasi."<<endl;
         _sleep(1000);
@@ -245,7 +262,7 @@ system("CLS");
 
                 if(user=="1")
         {
-            if(energija>70)
+            if(energija>=70)
             {
                 energija=100;
             }
@@ -257,7 +274,7 @@ system("CLS");
 
         if(user=="2")
         {
-            if(energija>80)
+            if(energija>=80)
             {
                 energija=100;
             }
@@ -269,7 +286,7 @@ system("CLS");
 
         if(user=="3")
         {
-            if(energija>90)
+            if(energija>=90)
             {
                 energija=100;
             }
@@ -337,6 +354,7 @@ void darbas()
             cout<<"Isidarbinote kasykloje"<<endl;
             cout<<endl;
             kasykla=1;
+            ac3=1;
             system("pause");
             system("CLS");
             }
@@ -356,6 +374,7 @@ void darbas()
                 cout<<"Isidarbinote valytoju"<<endl;
                 cout<<endl;
                 valytojas=1;
+                ac4=1;
                 system("pause");
                 system("CLS");
             }
@@ -375,6 +394,7 @@ void darbas()
                 cout<<"Isidarbinote apsauginiu"<<endl;
                 cout<<endl;
                 apsauginis=1;
+                ac5=1;
                 system("pause");
                 system("CLS");
             }
@@ -394,6 +414,7 @@ void darbas()
                 cout<<"Isidarbinote vairuotoju"<<endl;
                 cout<<endl;
                 vairuotojas=1;
+                ac6=1;
                 system("pause");
                 system("CLS");
             }
@@ -413,6 +434,7 @@ void darbas()
                 cout<<"Isidarbinote programuotoju"<<endl;
                 cout<<endl;
                 programuotojas=1;
+                ac7=1;
                 system("pause");
                 system("CLS");
             }
@@ -434,6 +456,7 @@ void darbas()
 
     else
     {
+        if(energija<30) ac8=1;
         string patvirt;
         system("CLS");
         cout<<"Dirbama."<<endl;
@@ -657,11 +680,120 @@ void darbas()
 
 }
 
+void achievements()
+{
+    cout<<"Pasiekimai: (Dar neivykdyti - [ ], ivykdyti - [x]"<<endl;
+    cout<<"-------------------------------------------------"<<endl;
+    //------------------------------------------------------------
+    cout<<endl;
+    cout<<"Sporto pasiekimai:"<<endl;
+    cout<<"-----------------------------"<<endl;
+    //------------------------------------------------------------
+    cout<<"Atliko lengva treniruote";//
+    if (ac1==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Atliko sunkia treniruote";//
+    if (ac2==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<endl;
+    cout<<"Darbo pasiekimai:"<<endl;
+    cout<<"-----------------------------"<<endl;
+    //------------------------------------------------------------
+    cout<<"Isidarbino kasykloje";//
+    if (ac3==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Isidarbino valytoju";//
+    if (ac4==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Isidarbino apsauginiu";//
+    if (ac5==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Isidarbino vairuotoju";//
+    if (ac6==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Isidarbino programuotoju";//
+    if (ac7==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Dirbo turint maziau nei 30 energijos";//
+    if (ac8==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<endl;
+    cout<<"Kovotojo pasiekimai:"<<endl;
+    cout<<"-----------------------------"<<endl;
+    //------------------------------------------------------------
+    cout<<"Pakele jega iki 20";//
+    if (ac9==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Pakele jega iki 50";//
+    if (ac10==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Baige zaidima pasirinkes sunku sunkumo lygi";
+    if (ac11==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Baige zaidima pasirinkes vidutini sunkumo lygi";
+    if (ac12==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Baige zaidima pasirinkes lengva sunkumo lygi";
+    if (ac13==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<endl;
+    cout<<"Ivairus pasiekimai:"<<endl;
+    cout<<"-----------------------------"<<endl;
+    //------------------------------------------------------------
+    cout<<"Pirko daikta is parduotuves";
+    if (ac14==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<"Pardave daikta parduotuveje";
+    if (ac15==1) cout<<" [x]"<<endl;
+    else cout<<" [ ]"<<endl;
+    //------------------------------------------------------------
+    cout<<endl;
+    cout<<endl;
+    system("pause");
+    system("CLS");
+}
+
+void inventorius()
+{
+        cout<<endl;
+        cout<<"------------------------------------------------------------------------------------------------------------------------"<<endl;
+        cout<<" | Gyvybes: "<<hp<<" | Energija: "<<energija<<" | Jega: "<<jega<<" | Monetos: "<<monetos<<" | Patirtis: "<<patirtis<<" | " <<endl;
+        cout<<"------------------------------------------------------------------------------------------------------------------------"<<endl;
+        cout<<endl;
+        cout<<"Jusu inventorius:"<<endl;
+        for (int i = 0; i < 12; i++) {
+                if(I[i].turi==1)
+                {
+        cout <<i+1<<" "<< I[i].name<<" | ";
+        cout << "Gyvybes verte: " << I[i].hp<<" | ";
+        cout << "Jegos verte: " << I[i].jega<<" "<<endl;
+        cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
+                }
+            }
+
+
+            system("pause");
+            system("CLS");
+}
+
 void zaidimas()
 {
     int choice;
     cout<<"Sveiki atvyke i Kovotoju Sala"<<endl;
-    cout<<"Norinti isjugnti zaidima iveskite Q"<<endl;
     cout<<"-----------------------------------"<<endl;
     cout<<endl;
     cout<<"Pasirinkite sunkumo lygi:"<<endl;
@@ -702,6 +834,20 @@ void zaidimas()
     system("CLS");
     int test=0;
 
+     fullHP=100;
+                int sumaHP=0;
+                int sumaJEGA=0;
+                for(int i=0; i<12; i++)
+                {
+                    if(I[i].turi==1)
+                    {
+                    sumaHP=sumaHP+I[i].hp;
+                    sumaJEGA=sumaJEGA+I[i].jega;
+                    }
+                }
+                hp=hp+sumaHP;
+                jega=sumaJEGA;
+
 
     while(test==0)
     {
@@ -733,6 +879,8 @@ void zaidimas()
         cout<<"Pasiekete 5 LYGI, atrakinote naujus darbus bei galite mesti issuki paskutiniam kovotojui"<<endl;
         level=5;
     }
+    if(jega>=20) ac9=1;
+    if(jega>=50) ac10=1;
     if(kasykla==1 || valytojas==1 || apsauginis==1 || vairuotojas==1 || programuotojas==1)
     {
         cout<<"\t\t\t\t  | Darbo vieta: ";
@@ -743,6 +891,7 @@ void zaidimas()
         if(programuotojas==1) cout<<"Programuotojas";
         cout<<endl;
     }
+
     cout<<"----------------------------------|--------------------------------------------------------------------| "<<endl;
     cout<<"Galimi veiksmai-------------------| Gyvybes: "<<hp<<" | Energija: "<<energija<<" | Jega: "<<jega<<" | Monetos: "<<monetos<<" | Patirtis: "<<patirtis<<" | " <<endl;
     cout<<"----------------------------------|--------------------------------------------------------------------| "<<endl;
@@ -755,10 +904,13 @@ void zaidimas()
     cout<<"[7] Mesti issuki"<<endl;
     cout<<"[8] Darbas"<<endl;
     cout<<"----------------------------------"<<endl;
+    cout<<"[9] Pasiekimai"<<endl;
+    cout<<"----------------------------------"<<endl;
         M[5].hp = hp;
         M[5].energija = energija;
         M[5].jega = jega;
         M[5].monetos = monetos;
+
         cin>>choice;
     switch(choice)
     {
@@ -773,6 +925,8 @@ void zaidimas()
         }
     case 2:
         {
+            system("CLS");
+            inventorius();
             break;
         }
     case 3:
@@ -858,6 +1012,14 @@ void zaidimas()
             }
             break;
         }
+    case 9:
+        {
+            system("CLS");
+            achievements();
+            break;
+        }
+
+
     default:
         {
             system("CLS");
@@ -868,6 +1030,7 @@ void zaidimas()
     }
 
     }
+
 
     }
 
@@ -886,7 +1049,7 @@ int main() {
     hp = 0;
     energija = 0;
     jega = 0;
-    patirtis = 999;
+    patirtis = 0;
     srand(time(NULL));
     ifstream fin("Priesai.txt");
 
@@ -897,6 +1060,20 @@ int main() {
             fin >> M[i].jega;
             fin >> M[i].monetos;
     }
+    fin.close();
+
+
+    ifstream fit("Items.txt");
+        for (int i = 0; i < 12; i++) {
+            fit >> I[i].name;
+            fit >> I[i].hp;
+            fit >> I[i].jega;
+            fit >> I[i].monetos;
+            fit >> I[i].turi;
+    }
+    fit.close();
+
+
 /*
         for (int i = 0; i < 1; i++) {
             cout << "Vardas: " << M[i].Vardas<<endl;
