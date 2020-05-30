@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
@@ -38,7 +39,7 @@ struct Kovotojai
 
 struct Items
 {
-    string name;
+    char name[500];
     int hp;
     int jega;
     int monetos;
@@ -313,15 +314,207 @@ void Herojus()
 void issukis()
 {
             int pasirinkimas;
+            int vibe=5;
             for (int i = 0; i < 5; i++) {
-            cout <<"["<<i+1<<"]"<<" "<< M[i].Vardas<<" ";
+            cout <<"["<<vibe<<"]"<<" "<< M[i].Vardas<<" ";
             cout << "Gyvybes: " << M[i].hp<<" ";
             cout << "Energija: " << M[i].energija<<" ";
             cout << "Jega: " << M[i].jega<<" "<<endl;;
+            vibe=vibe-1;
             }
             cout<<"------------------------------------"<<endl;
             cout<<"Kuriam kovotojui norite mesti issuki?"<<endl;
             cin>>pasirinkimas;
+            switch(pasirinkimas)
+            {
+            case 1:
+                {
+                    if(level<1)
+                    {
+                        cout<<"Jusu lygis per mazas mesti issuki siam kovotojui"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else if (energija<80)
+                    {
+                        cout<<"Jusu energija turi buti bent 80 norint mesti issuki"<<endl;
+                        cout<<"Pailsekite"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else
+                    {
+                        int test=0;
+                        while(test==0)
+                        {
+
+
+                        system("CLS");
+                        cout<<"Kovojate pries: "<<M[4].Vardas<<endl;
+                        cout<<"-------------------------------------------------------------------------------------------------------- "<<endl;
+                        cout<<vardas<<" ----| Gyvybes: "<<hp<<" | Jega: "<<jega<<endl;
+                        cout<<"-------------------------------------------------------------------------------------------------------- "<<endl;
+                        cout<<M[4].Vardas<<" ----| Gyvybes: "<<M[4].hp<<" | Jega: "<<M[4].jega<<endl;
+                        cout<<"-------------------------------------------------------------------------------------------------------- "<<endl;
+                        cout<<endl;
+                        cout<<endl;
+                        cout<<"Koki veiksma norite atlikti?"<<endl;
+                        cout<<"[1] Pulti"<<endl;
+                        cout<<"[2] Gintis"<<endl;
+                        cout<<"[3] Pabegti"<<endl;
+                        int veiksmas;
+                        cin>>veiksmas;
+                        switch(veiksmas)
+                        {
+                        case 1:
+                            {
+                                cout<<endl;
+                                int temp;
+                                int temp2;
+                                int a,  b;
+                                a=M[4].jega+1;
+                                b=jega+1;
+                                temp2=rand()%a;
+                                temp=rand()%b;
+                                M[4].hp = M[4].hp - temp;
+                                cout<<"Padarete "<<temp<<" zalos"<<endl;
+                                system("pause");
+                                if(M[4].hp<0)
+                                {
+                                    cout<<endl;
+                                    cout<<"Nugalejote priesininka!"<<endl;
+                                    system("pause");
+                                    int rare;
+                                    rare=rand() % (12 - 8 + 1) + 8;
+                                    if(I[rare].turi==1)
+                                    {
+                                        int kapeika;
+                                        kapeika=rand()%500+1;
+                                        cout<<endl;
+                                        cout<<"Deja, negavote reto daikto"<<endl;
+                                        cout<<"Gavote "<<kapeika<<" monetu"<<endl;
+                                        monetos=monetos+kapeika;
+                                        system("pause");
+                                        system("CLS");
+                                        test=1;
+                                    }
+                                    else
+                                    {
+                                    I[rare].turi=1;
+                                    hp=hp+I[rare].hp;
+                                    jega=jega+I[rare].jega;
+                                    cout<<"Gavote reta daikta: "<<I[rare].name<<endl;
+                                    patirtis=patirtis+900;
+                                    system("pause");
+                                    system("CLS");
+                                    test=1;
+                                    }
+                                }
+                                else
+                                {
+                                cout<<"Priesininkas jums padare "<<temp2<<" zalos"<<endl;
+                                system("pause");
+                                hp=hp-temp2;
+                                if(hp<0)
+                                {
+                                    cout<<endl;
+                                    cout<<"Jus buvote nugaletas priesininko"<<endl;
+                                    cout<<"--------------------------------"<<endl;
+                                    system("pause");
+                                    cout<<"--------------------------------"<<endl;
+                                    test=1;
+                                }
+                                }
+                                break;
+                            }
+                        case 2:
+                            {
+                                int temp2;
+                                int a;
+                                a=M[4].jega+1;
+                                temp2=rand()%a;
+                                cout<<"Jus ginates"<<endl;
+                                cout<<"------------------------------------------"<<endl;
+                                cout<<"Priesininkas jums turejo padaryti "<<temp2<<" zalos"<<endl;
+                                cout<<"Apsigynete, jums padare "<<temp2/3<<" zalos"<<endl;
+                                system("pause");
+                                hp=hp-(temp2/3);
+                                if(hp<0)
+                                {
+                                    cout<<endl;
+                                    cout<<"Jus buvote nugaletas priesininko"<<endl;
+                                    cout<<"--------------------------------"<<endl;
+                                    system("pause");
+                                    cout<<"--------------------------------"<<endl;
+                                    test=1;
+                                }
+                                break;
+                            }
+                        case 3:
+                            {
+                                if(hp>=10)
+                                {
+                                    cout<<"Pabegote nuo priesininko"<<endl;
+                                    system("pause");
+                                    test=1;
+                                }
+                                else
+                                {
+                                    cout<<"Jus turite per mazai gyvybes norint pabegti"<<endl;
+                                    system("pause");
+                                }
+                                break;
+                            }
+                        }
+
+
+                    }
+
+
+                    }
+                    break;
+                }
+            case 2:
+                {
+                    if(level<2)
+                    {
+                        cout<<"Jusu lygis per mazas mesti issuki siam kovotojui"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    break;
+                }
+            case 3:
+                {
+                    if(level<3)
+                    {
+                        cout<<"Jusu lygis per mazas mesti issuki siam kovotojui"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    break;
+                }
+            case 4:
+                {
+                    if(level<4)
+                    {
+                        cout<<"Jusu lygis per mazas mesti issuki siam kovotojui"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    break;
+                }
+            case 5:
+                {
+                    if(level<5)
+                    {
+                        cout<<"Jusu lygis per mazas mesti issuki siam kovotojui"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    break;
+                }
+            }
 }
 
 void darbas()
@@ -806,7 +999,52 @@ void parduotuve()
     {
     case 1:
         {
+           system("CLS");
             cout<<endl;
+            cout<<"Parduodami daiktai:"<<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
+            for (int i = 1; i < 8; i++) {
+                if(I[i].turi==0)
+                {
+            cout <<"ID "<<i<<" | "<< I[i].name<<" | ";
+            cout << "Gyvybes verte: " << I[i].hp<<" | ";
+            cout << "Jegos verte: " << I[i].jega<<" | ";
+            cout << "Kaina: " << I[i].monetos<<" monetu "<<endl;
+            cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
+                }
+            }
+
+            int cycle=0;
+
+            while(cycle==0)
+            {
+
+
+            cout<<"Iveskite ID daikto, kuri norite pirkti"<<endl;
+            int id;
+            cin>>id;
+            if(I[id].turi==1 || id>13 || id<1)
+            {
+                cout<<"Neteisingai ivestas daikto ID"<<endl;
+            }
+            else if(monetos-I[id].monetos<0) cout<<"Neturite pakankamai pinigu daiktui"<<endl;
+            else{
+                    ac14=1;
+            cout << "-----------------------------------------------------------------------------------------------------------------------"<<endl;
+            cout<<I[id].name<<" Sekmingai nupirktas. Isleidote "<<I[id].monetos<<" monetu. Gavote "<<I[id].hp<<" gyvybes ir "<<I[id].jega<<" jegos";
+            hp=hp+I[id].hp;
+            jega=jega+I[id].jega;
+            monetos=monetos-I[id].monetos;
+            I[id].turi=1;
+            cout<<endl;
+            system("pause");
+            cycle=1;
+            system("CLS");
+            }
+
+
+            }
+
             break;
         }
     case 2:
@@ -883,7 +1121,7 @@ void zaidimas()
     cout<<"3. Sunkus"<<endl;
     cin >> user;
 
-    if (user=="1")hp = 80, energija = 100, monetos = 30, jega = 10;
+    if (user=="1")hp = 80, energija = 100, monetos = 999, jega = 10;
     if (user=="2")hp = 50, energija = 80, monetos = 15, jega = 7;
     if (user=="3")hp = 30, energija = 50, monetos = 10, jega = 5;
     system("CLS");
