@@ -1,4 +1,4 @@
-Bread 1 0 10 0
+Tasty_Bread 1 0 10 0
 Wooden_Sword 0 20 100 0
 Leather_Shoes 20 0 100 0
 Stone_Ring 20 20 150 0
