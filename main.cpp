@@ -87,10 +87,36 @@ void kova(int &pries)
                                 system("pause");
                                 if(M[pries].hp<=0)
                                 {
+                                    if(pries==0)
+                                    {
+                                        cout<<"Jusu priesininkas jau bejegis"<<endl;
+                                        cout<<"[1] Paleisti ji"<<endl;
+                                        cout<<"[2] Atkersyti jam"<<endl;
+                                        cout<<endl;
+                                        int last;
+                                        cin>>last;
+                                        switch(last)
+                                        {
+                                        case 1:
+                                            {
+                                                cout<<"Pasirinkote pagaileti geriausio kovotojo"<<endl;
+                                                system("pause");
+                                                break;
+                                            }
+                                        case 2:
+                                            {
+                                                cout<<"Pasirinkote atkersyti geriausiam kovotojui"<<endl;
+                                                system("pause");
+                                                break;
+                                            }
+                                        }
+                                    }
                                     cout<<endl;
                                     cout<<"Nugalejote priesininka!"<<endl;
                                     M[pries].hp=0;
                                     M[pries].jega=0;
+                                    string win = "(NUGALETAS)";
+                                    M[pries].Vardas = M[pries].Vardas+" "+win;
                                     system("pause");
                                     int rare;
                                     rare=rand() % (12 - 8 + 1) + 8;
@@ -113,10 +139,11 @@ void kova(int &pries)
                                     jega=jega+I[rare].jega;
                                     cout<<"Gavote reta daikta: "<<I[rare].name<<endl;
                                     cout<<"------------------------------------"<<endl;
-                                    if (level==1) patirtis=patirtis+900;
-                                    if (level==2) patirtis=patirtis+1300;
-                                    if (level==3) patirtis=patirtis+2000;
-                                    if (level==4) patirtis=patirtis+3000;
+                                    if (M[4].hp<=0) patirtis=patirtis+900;
+                                    if (M[3].hp<=0) patirtis=patirtis+1100;
+                                    if (M[2].hp<=0) patirtis=patirtis+1500;
+                                    if (M[1].hp<=0) patirtis=patirtis+2000;
+                                    if (M[0].hp<=0) patirtis=patirtis+3000;
                                     system("pause");
                                     system("CLS");
                                     test=1;
@@ -515,6 +542,25 @@ void issukis()
                         system("pause");
                         system("CLS");
                     }
+                                        else if (energija<80)
+                    {
+                        cout<<"Jusu energija turi buti bent 80 norint mesti issuki"<<endl;
+                        cout<<"Pailsekite"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else if (M[3].hp<=0)
+                    {
+                        cout<<"Sis kovotojas jau yra nugaletas"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else
+                    {
+                    int priesininkas;
+                    priesininkas=3;
+                    kova(priesininkas);
+                    }
                     break;
                 }
             case 3:
@@ -524,6 +570,25 @@ void issukis()
                         cout<<"Jusu lygis per mazas mesti issuki siam kovotojui"<<endl;
                         system("pause");
                         system("CLS");
+                    }
+                    else if (energija<80)
+                    {
+                        cout<<"Jusu energija turi buti bent 80 norint mesti issuki"<<endl;
+                        cout<<"Pailsekite"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else if (M[2].hp<=0)
+                    {
+                        cout<<"Sis kovotojas jau yra nugaletas"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else
+                    {
+                    int priesininkas;
+                    priesininkas=2;
+                    kova(priesininkas);
                     }
                     break;
                 }
@@ -535,15 +600,53 @@ void issukis()
                         system("pause");
                         system("CLS");
                     }
+                    else if (energija<80)
+                    {
+                        cout<<"Jusu energija turi buti bent 80 norint mesti issuki"<<endl;
+                        cout<<"Pailsekite"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else if (M[1].hp<=0)
+                    {
+                        cout<<"Sis kovotojas jau yra nugaletas"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else
+                    {
+                    int priesininkas;
+                    priesininkas=1;
+                    kova(priesininkas);
+                    }
                     break;
                 }
             case 5:
                 {
-                    if(level<5)
+                   if(level<5)
                     {
                         cout<<"Jusu lygis per mazas mesti issuki siam kovotojui"<<endl;
                         system("pause");
                         system("CLS");
+                    }
+                    else if (energija<80)
+                    {
+                        cout<<"Jusu energija turi buti bent 80 norint mesti issuki"<<endl;
+                        cout<<"Pailsekite"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else if (M[0].hp<=0)
+                    {
+                        cout<<"Sis kovotojas jau yra nugaletas"<<endl;
+                        system("pause");
+                        system("CLS");
+                    }
+                    else
+                    {
+                    int priesininkas;
+                    priesininkas=0;
+                    kova(priesininkas);
                     }
                     break;
                 }
@@ -556,7 +659,16 @@ void darbas()
     {
     int work;
     cout<<"Jusu patirtis: "<<patirtis<<endl;
+    cout<<"Darbo vieta: ";
+        if(kasykla==0&&valytojas==0&&apsauginis==0&&vairuotojas==0&&programuotojas==0) cout<<"Bedarbis";
+        if(kasykla==1) cout<<"Kasykla";
+        if(valytojas==1) cout<<"Valytojas";
+        if(apsauginis==1) cout<<"Apsauginis";
+        if(vairuotojas==1) cout<<"Vairuotojas";
+        if(programuotojas==1) cout<<"Programuotojas";
     cout<<endl;
+    cout<<endl;
+    cout<<"-------------------------------------------------"<<endl;
     cout<<"Kur norite isidarbinti: "<<endl;
     cout<<"[1] Kasykla (Reikalinga patirtis: 0)"<<endl;
     cout<<"[2] Valytojas (Reikalinga patirtis: >=1000)"<<endl;
@@ -1115,6 +1227,7 @@ void parduotuve()
 
 
             cout<<"Iveskite ID daikto, kuri norite parduoti"<<endl;
+            cout<<"Iveskite 0000 jei nenorite nieko parduoti"<<endl;
             int id;
             cin>>id;
             if (id==0000)
@@ -1171,7 +1284,7 @@ void zaidimas()
     cout<<"3. Sunkus"<<endl;
     cin >> user;
 
-    if (user=="1")hp = 80, energija = 100, monetos = 50, jega = 10;
+    if (user=="1")hp = 80, energija = 100, monetos = 50, jega = 15;
     if (user=="2")hp = 50, energija = 80, monetos = 25, jega = 7;
     if (user=="3")hp = 30, energija = 50, monetos = 10, jega = 0;
     system("CLS");
@@ -1215,7 +1328,7 @@ void zaidimas()
                     }
                 }
                 hp=hp+sumaHP;
-                jega=sumaJEGA;
+                jega=jega+sumaJEGA;
 
 
     while(test==0)
@@ -1225,27 +1338,41 @@ void zaidimas()
             cout<<"Pralaimejote zaidima"<<endl;
             test=1;
         }
+        else if(M[0].hp<=0)
+        {
+            system("CLS");
+            cout<<"Jus nugalejote geriausia kovotoja saloje."<<endl;
+            cout<<"Sveikiname peremus salos kontrole"<<endl;
+            cout<<"-----------------------------------------"<<endl;
+            cout<<"Zaidimas baigtas"<<endl;
+            system("pause");
+            test=1;
+        }
         else{
     cout<<endl;
     cout<<endl;
     if(patirtis>=1000 && level==1)
     {
         cout<<"Pasiekete 2 LYGI, atrakinote naujus darbus bei galite mesti issuki naujam kovotojui"<<endl;
+        cout<<"-----------------------------------------------------------------------------------"<<endl;
         level=2;
     }
     if(patirtis>=2500 && level==2)
     {
         cout<<"Pasiekete 3 LYGI, atrakinote naujus darbus bei galite mesti issuki naujam kovotojui"<<endl;
+        cout<<"-----------------------------------------------------------------------------------"<<endl;
         level=3;
     }
     if(patirtis>=5000 && level==3)
     {
         cout<<"Pasiekete 4 LYGI, atrakinote naujus darbus bei galite mesti issuki naujam kovotojui"<<endl;
+        cout<<"-----------------------------------------------------------------------------------"<<endl;
         level=4;
     }
     if(patirtis>=10000 && level==4)
     {
         cout<<"Pasiekete 5 LYGI, atrakinote naujus darbus bei galite mesti issuki paskutiniam kovotojui"<<endl;
+        cout<<"-----------------------------------------------------------------------------------"<<endl;
         level=5;
     }
     if(jega>=20) ac9=1;
@@ -1350,12 +1477,29 @@ void zaidimas()
             {
             system("CLS");
             int job;
+                cout<<"Darbo vieta: ";
+                if(kasykla==0&&valytojas==0&&apsauginis==0&&vairuotojas==0&&programuotojas==0) cout<<"Bedarbis";
+                if(kasykla==1) cout<<"Kasykla";
+                if(valytojas==1) cout<<"Valytojas";
+                if(apsauginis==1) cout<<"Apsauginis";
+                if(vairuotojas==1) cout<<"Vairuotojas";
+                if(programuotojas==1) cout<<"Programuotojas";
+            cout<<endl;
+            cout<<endl;
+            cout<<"---------------------------------"<<endl;
             cout<<"Norite dirbti ar iseiti is darbo?"<<endl;
             cout<<"[1] Dirbti"<<endl;
             cout<<"[2] Iseiti is darbo"<<endl;
+            cout<<"---------------------------------"<<endl;
+            cout<<"[0] Grizti atgal"<<endl;
             cin>>job;
             switch(job)
             {
+            case 0:
+                {
+                    system("CLS");
+                    break;
+                }
             case 1:
                 {
                 system("CLS");
