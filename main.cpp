@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <ctime>
 
+
 using namespace std;
 
 
@@ -14,6 +15,10 @@ int arTreniravosi=0;
 
 int fullHP=100;
 int fullPOWER=100;
+
+
+int kiektren=0;
+int kiekdirb=0;
 
 int kasykla=0;
 int valytojas=0;
@@ -46,6 +51,104 @@ struct Items
 
     int turi;
 }I[13];
+
+void makeGap( int gap , std::string & text ) {
+	for ( int i = 0 ; i < gap ; i++ )
+	text.append( " " ) ;
+}
+
+void HTML()
+{
+    ofstream fht("Output.html");
+    fht<<"<!DOCTYPE html>"<<endl;
+    fht<<"<html>"<<endl;
+    fht<<"<head>"<<endl;
+    fht<<"<title>HTML Table test</title>"<<endl;
+
+    fht<<"<style>"<<endl;
+    fht<<"table {"<<endl;
+    fht<<"border-spacing: 0;"<<endl;
+    fht<<"width: 50%;"<<endl;
+    fht<<"border: 1px solix #ddd;"<<endl;
+    fht<<"}"<<endl;
+    fht<<endl;
+    fht<<"th, td {"<<endl;
+    fht<<"text-align: center;"<<endl;
+    fht<<"padding: 16px;"<<endl;
+    fht<<"}"<<endl;
+    fht<<endl;
+    fht<<"tr:nth-child(even) {"<<endl;
+    fht<<"background-color: #f2f2f2"<<endl;
+    fht<<"}"<<endl;
+    fht<<endl;
+    fht<<".header {"<<endl;
+    fht<<"padding: 60px;"<<endl;
+    fht<<"text-align: center;"<<endl;
+    fht<<"background: #BC381C;"<<endl;
+    fht<<"color: white;"<<endl;
+    fht<<"font-size: 20px;"<<endl;
+    fht<<"}"<<endl;
+    fht<<"</style>"<<endl;
+    fht<<"</head>"<<endl;
+    fht<<"<body>"<<endl;
+
+    fht<<endl;
+
+    fht<<"<div class=\"header\">"<<endl;
+    fht<<"<h1>TOP ZAIDEJU SARASAS</h1>"<<endl;
+    fht<<"</div>"<<endl;
+    fht<<endl;
+
+    fht<<"<table id=\"myTable\""<<endl;
+    fht<<"<table style=\"border:1px solid black;margin-left:auto;margin-right:auto;\">"<<endl;
+    fht<<"<tr>"<<endl;
+    fht<<"<th>Zaidejo vardas</th>"<<endl;
+    fht<<"<th>Atlikta treniruociu</th>"<<endl;
+    fht<<"<th>Kartu dirbta</th>"<<endl;
+    fht<<"<th>Monetu kiekis</th>"<<endl;
+    fht<<"<th>Surinkta patirtis</th>"<<endl;
+    fht<<"</tr>"<<endl;
+
+    fht<<"<tr>"<<endl;
+    fht<<"<td>"<<vardas<<"</th>"<<endl;
+    fht<<"<td>"<<kiektren<<"</th>"<<endl;
+    fht<<"<td>"<<kiekdirb<<"</th>"<<endl;
+    fht<<"<td>"<<monetos<<"</th>"<<endl;
+    fht<<"<td>"<<patirtis<<"</th>"<<endl;
+    fht<<"</tr>"<<endl;
+
+    fht<<"<tr>"<<endl;
+    fht<<"<td>Jonas</th>"<<endl;
+    fht<<"<td>2</th>"<<endl;
+    fht<<"<td>1</th>"<<endl;
+    fht<<"<td>20</th>"<<endl;
+    fht<<"<td>90</th>"<<endl;
+    fht<<"</tr>"<<endl;
+
+    fht<<"<tr>"<<endl;
+    fht<<"<td>Antanas</th>"<<endl;
+    fht<<"<td>1</th>"<<endl;
+    fht<<"<td>1</th>"<<endl;
+    fht<<"<td>10</th>"<<endl;
+    fht<<"<td>50</th>"<<endl;
+    fht<<"</tr>"<<endl;
+
+    fht<<"<tr>"<<endl;
+    fht<<"<td>Petras</th>"<<endl;
+    fht<<"<td>0</th>"<<endl;
+    fht<<"<td>1</th>"<<endl;
+    fht<<"<td>37</th>"<<endl;
+    fht<<"<td>45</th>"<<endl;
+    fht<<"</tr>"<<endl;
+
+
+    fht<<"</table>"<<endl;
+    fht<<"</body>"<<endl;
+    fht<<"</html>"<<endl;
+    fht.close();
+
+    system("start Output.html");
+}
 
 void kova(int &pries)
 {
@@ -250,6 +353,7 @@ void treniruote()
             jega=jega+3;
             energija=energija-10;
             cout<<"Jusu jega padidejo +3, -10 energijos"<<endl;
+            kiektren++;
             system("pause");
             }
             else
@@ -259,6 +363,7 @@ void treniruote()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiektren++;
                 jega=jega+3;
                 hp=hp-10;
                 cout<<"Jusu jega padidejo +3, -10 gyvybes"<<endl;
@@ -274,6 +379,7 @@ void treniruote()
 
             if(energija>=15)
             {
+            kiektren++;
             jega=jega+2;
             energija=energija-15;
             cout<<"Jusu jega padidejo +2, -15 energijos"<<endl;
@@ -286,6 +392,7 @@ void treniruote()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiektren++;
                 jega=jega+2;
                 hp=hp-20;
                 cout<<"Jusu jega padidejo +2, -20 gyvybes"<<endl;
@@ -301,6 +408,7 @@ void treniruote()
 
             if(energija>=40)
             {
+            kiektren++;
             jega=jega+1;
             energija=energija-25;
             cout<<"Jusu jega padidejo +1, -25 energijos"<<endl;
@@ -313,6 +421,7 @@ void treniruote()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiektren++;
                 jega=jega+1;
                 hp=hp-30;
                 cout<<"Jusu jega padidejo +1, -30 gyvybes"<<endl;
@@ -341,6 +450,7 @@ void treniruote()
 
             if(energija>=30)
             {
+            kiektren++;
             jega=jega+8;
             energija=energija-30;
             cout<<"Jusu jega padidejo +8, -30 energijos"<<endl;
@@ -353,6 +463,7 @@ void treniruote()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiektren++;
                 jega=jega+8;
                 hp=hp-10;
                 cout<<"Jusu jega padidejo +8, -10 gyvybes"<<endl;
@@ -368,6 +479,7 @@ void treniruote()
 
             if(energija>=40)
             {
+            kiektren++;
             jega=jega+3;
             energija=energija-40;
             cout<<"Jusu jega padidejo +3, -40 energijos"<<endl;
@@ -380,6 +492,7 @@ void treniruote()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiektren++;
                 jega=jega+3;
                 hp=hp-40;
                 cout<<"Jusu jega padidejo +3, -40 gyvybes"<<endl;
@@ -395,6 +508,7 @@ void treniruote()
 
             if(energija>=50)
             {
+            kiektren++;
             jega=jega+2;
             energija=energija-50;
             cout<<"Jusu jega padidejo +2, -50 energijos"<<endl;
@@ -407,6 +521,7 @@ void treniruote()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiektren++;
                 jega=jega+2;
                 hp=hp-50;
                 cout<<"Jusu jega padidejo +2, -50 gyvybes"<<endl;
@@ -542,7 +657,7 @@ void issukis()
                         system("pause");
                         system("CLS");
                     }
-                                        else if (energija<80)
+                    else if (energija<80)
                     {
                         cout<<"Jusu energija turi buti bent 80 norint mesti issuki"<<endl;
                         cout<<"Pailsekite"<<endl;
@@ -707,7 +822,7 @@ void darbas()
         }
     case 2:
         {
-            if(patirtis>=1000)
+            if(patirtis>=1000 || level==2)
             {
                 cout<<"Isidarbinote valytoju"<<endl;
                 cout<<endl;
@@ -727,7 +842,7 @@ void darbas()
         }
     case 3:
         {
-            if(patirtis>=2500)
+            if(patirtis>=2500 || level==3)
             {
                 cout<<"Isidarbinote apsauginiu"<<endl;
                 cout<<endl;
@@ -747,7 +862,7 @@ void darbas()
         }
     case 4:
         {
-            if(patirtis>=5000)
+            if(patirtis>=5000 || level==4)
             {
                 cout<<"Isidarbinote vairuotoju"<<endl;
                 cout<<endl;
@@ -767,7 +882,7 @@ void darbas()
         }
     case 5:
         {
-            if(patirtis>10000)
+            if(patirtis>10000 || level==5)
             {
                 cout<<"Isidarbinote programuotoju"<<endl;
                 cout<<endl;
@@ -810,6 +925,7 @@ void darbas()
 
             if(energija>=20)
             {
+            kiekdirb++;
             //----------------------------------
             int temp;
             temp=monetos;
@@ -830,6 +946,7 @@ void darbas()
             }
             else
             {
+                kiekdirb++;
                 int temp;
                 cout<<"Nepakanka energijos, ar norite testi darba ?(Prarasite gyvybes)"<<endl;
                 cout<<"(T)aip | (N)e "<<endl;
@@ -852,6 +969,7 @@ void darbas()
 
             if(energija>=30)
             {
+            kiekdirb++;
             //----------------------------------
             int temp;
             temp=monetos;
@@ -878,6 +996,7 @@ void darbas()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiekdirb++;
                 temp=monetos;
                 monetos=monetos+rand() % 100+1;
                 energija=0;
@@ -894,6 +1013,7 @@ void darbas()
 
             if(energija>=35)
             {
+            kiekdirb++;
             //----------------------------------
             int temp;
             temp=monetos;
@@ -920,6 +1040,7 @@ void darbas()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiekdirb++;
                 temp=monetos;
                 monetos=monetos+rand() % 500+1;
                 energija=0;
@@ -936,6 +1057,7 @@ void darbas()
 
             if(energija>=40)
             {
+            kiekdirb++;
             //----------------------------------
             int temp;
             temp=monetos;
@@ -962,6 +1084,7 @@ void darbas()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiekdirb++;
                 temp=monetos;
                 monetos=monetos+rand() % 1000+1;
                 energija=0;
@@ -978,6 +1101,7 @@ void darbas()
 
             if(energija>=50)
             {
+            kiekdirb++;
             //----------------------------------
             int temp;
             temp=monetos;
@@ -1004,6 +1128,7 @@ void darbas()
                 cin>>patvirt;
                 if(patvirt=="T")
                 {
+                kiekdirb++;
                 temp=monetos;
                 monetos=monetos+rand() % 10000+1;
                 energija=0;
@@ -1345,6 +1470,7 @@ void zaidimas()
             cout<<"Sveikiname peremus salos kontrole"<<endl;
             cout<<"-----------------------------------------"<<endl;
             cout<<"Zaidimas baigtas"<<endl;
+            HTML();
             system("pause");
             test=1;
         }
@@ -1387,7 +1513,6 @@ void zaidimas()
         if(programuotojas==1) cout<<"Programuotojas";
         cout<<endl;
     }
-
     cout<<"----------------------------------------------------------------------------------------|-Lygis: "<<level<<"----|"<<endl;
     cout<<"Galimi veiksmai-------------------| Gyvybes: "<<hp<<" | Energija: "<<energija<<" | Jega: "<<jega<<" | Monetos: "<<monetos<<" | Patirtis: "<<patirtis<<" | " <<endl;
     cout<<"----------------------------------|--------------------------------------------------------------------| "<<endl;
