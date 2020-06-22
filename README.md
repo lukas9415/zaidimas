@@ -1,5 +1,5 @@
 <br/>
-**Lukas Liutkevičius, PI19D<br/>
+**Lukas Liutkevičius, <br/>
 Žaidimas "SALOS KOVOTOJAS"<br/>**
 Žaidimo taisyklės ir detalus aprašas:
 
